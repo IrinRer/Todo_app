@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { ROUTES } from 'constants/route';
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 import { useAppDispatch } from 'hooks/redux/useAppDispatch';
-import { resetInput } from 'store/auth/slice';
+import { authorization, resetInput } from 'store/auth/slice';
 import Form from '../Form';
 import styles from './index.module.scss';
 
@@ -15,8 +15,13 @@ const Login = () => {
     const auth = getAuth();
     signInWithEmailAndPassword(auth, email, password)
       .then(({ user }) => {
-        console.log(user);
-        setErrorStyle(false);
+        dispatch(
+          authorization({
+            email: user.email,
+            id: user.uid,
+            token: user.refreshToken,
+          }),
+        );
       })
       .catch((error) => {
         dispatch(resetInput());

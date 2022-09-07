@@ -1,8 +1,8 @@
-import AddItemsContainer from 'container/Header';
+import Header from 'container/Header';
 import React from 'react';
 
 const Home = () => {
-  return <AddItemsContainer />;
+  return <Header />;
 };
 
 export default Home;

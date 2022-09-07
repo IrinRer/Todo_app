@@ -1,14 +1,15 @@
 import React from 'react';
+import AddItemsContainer from './AddItemsContainer';
+import ExitContainer from './ExitContainer';
 import styles from './index.module.scss';
 
-const AddItemsContainer = () => {
+const Header = () => {
   return (
     <div className={styles.wrapper}>
-      <p className={styles.task}>5 task</p>
-        <button type="submit" className={styles.btn_add}>Add new task</button>
-        <button type="button" className={styles.clear}>Clear completed</button>
+      <AddItemsContainer />
+      <ExitContainer />
     </div>
   );
 };
 
-export default AddItemsContainer;
+export default Header;

@@ -1,4 +1,3 @@
-import AuthContainer from 'container/AuthContainer';
 import CreateRoutes from 'container/Routes';
 import React from 'react';
 import styles from './index.module.scss';

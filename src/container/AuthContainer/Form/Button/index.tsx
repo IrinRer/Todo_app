@@ -9,7 +9,6 @@ const ButtonContainer = ({text, handleClick}) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // dispatch(authorization());
     handleClick(email, password)
   };
   return <ButtonComponent text={text} handleSubmit={handleSubmit} />;
