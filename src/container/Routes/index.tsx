@@ -4,6 +4,7 @@ import { Routes, Route, BrowserRouter } from 'react-router-dom';
 // import ErrorBoundary from 'common/ErrorBoundary';
 import Home from 'pages/Home';
 import { ROUTES } from 'constants/route';
+import Error from 'component/common/Error';
 import AuthPage from 'pages/AuthPage';
 import SignUp from 'container/AuthContainer/SignUp';
 import PrivateRoute from './PrivateRoute';
@@ -23,10 +24,10 @@ const CreateRoutes: React.FC = () => {
         />
         <Route path={ROUTES.login.path} element={<AuthPage />} />
         <Route path={ROUTES.signUp.path} element={<SignUp />} />
-        {/* <Route
+        <Route
             path={ROUTES.notFound.path}
             element={<Error text="Страница не найдена" />}
-          /> */}
+          />
       </Routes>
       {/* </ErrorBoundary> */}
     </BrowserRouter>

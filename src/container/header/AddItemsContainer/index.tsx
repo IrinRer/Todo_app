@@ -1,4 +1,3 @@
-import ExitComponent from 'component/Header/Exit';
 import React from 'react';
 import styles from './index.module.scss';
 
