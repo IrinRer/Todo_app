@@ -34,7 +34,7 @@
     "no-prototype-builtins": "off",
     "curly": "error",
     "no-param-reassign": "off",
-
+    "jsx-a11y/label-has-associated-control": "off",
     "import/no-unresolved": [
       "error",
       {
