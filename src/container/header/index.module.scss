@@ -1,0 +1,41 @@
+@import 'styles/color.scss';
+
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 10px;
+  padding: 0px 20px 0px 20px;
+  box-shadow: 0px 8px 0px $font-color;
+  background-color: $main-color;
+
+  .task {
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 27px;
+    color: $font-color;
+  }
+}
+
+.btn_add {
+  font-style: normal;
+  font-weight: 800;
+  border: none;
+  border-radius: 10px;
+  font-size: 20px;
+  line-height: 30px;
+  background-color: $button_add;
+  color: white;
+  padding: 0px 30px;
+  cursor: pointer;
+}
+
+.clear {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 27px;
+  color: $font-color;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
