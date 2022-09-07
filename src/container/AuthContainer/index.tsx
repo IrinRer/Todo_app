@@ -1,14 +1,16 @@
 import React from 'react';
-import Form from './Form';
+import { Link } from 'react-router-dom';
 import styles from './index.module.scss';
+import Login from './Login';
+import SignUp from './SignUp';
+// import SignUp from './SignUp';
 
 const AuthContainer = () => {
-  const handleClick = () => {
-    console.log('handleClick');
-  };
   return (
     <main className={styles.main}>
-      <Form text="Autorization" handleClick={handleClick} />
+      {/* <SignUp /> */}
+      <Login/>
+      <Link to='/sign-up'>or register</Link>
     </main>
   );
 };
