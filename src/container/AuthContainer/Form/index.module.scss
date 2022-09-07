@@ -1,6 +1,24 @@
 @import 'styles/color.scss';
 @import 'styles/mixins.scss';
 
+.error_form {
+  width: 350px;
+  display: flex;
+  padding: 10px 50px 10px 50px;
+  flex-direction: column;
+  border-radius: 10px;
+  background-color: $error !important;
+  
+  input {
+    border: 3px solid $urgent !important;
+  }
+  
+  button {
+    border: 3px solid $urgent !important;
+    color: $urgent !important;;
+  }
+
+}
 .wrapper_form {
   width: 350px;
   display: flex;
@@ -36,6 +54,7 @@
       font-weight: 400;
       font-size: 16px;
       line-height: 200%;
+      border: 2px solid $button_add;
       margin-left: 10px;
       padding: 0px 0px 0px 5px;
       @include media-breakpoint-only(xs) {

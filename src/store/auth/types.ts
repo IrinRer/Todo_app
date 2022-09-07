@@ -1,10 +1,9 @@
 export const AUTHORIZATION_SLICE_ALIAS = "authorization";
 
 export interface IAuthSlice {
-  auth: string;
-  email?: string;
-  login: string;
-  password?: string;
+  email: string;
+  id: number | null;
+  token: string;
   inputEmail?: string;
   inputPassword?: string;
 }

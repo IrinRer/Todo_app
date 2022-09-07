@@ -1,15 +1,19 @@
 import { useAppDispatch } from 'hooks/redux/useAppDispatch';
 import { useAppSelector } from 'hooks/redux/useAppSelector';
 import React from 'react';
+import classnames from 'classnames';
 import { getEmail, getPassword } from 'store/auth/selectors';
 import { changeInputLogin, changeInputPassword } from 'store/auth/slice';
 import ButtonContainer from './Button';
 import styles from './index.module.scss';
 
-const Form = ({ text, handleClick }) => {
+const Form = ({ text, handleClick, errorStyle}) => {
   const dispatch = useAppDispatch();
   const emailValue = useAppSelector(getEmail);
   const passwordValue = useAppSelector(getPassword);
+  const className = classnames(styles.wrapper_form, {
+    [styles.error_form]: errorStyle
+  });
 
   const handleChangeEmail = (e) => {
     dispatch(changeInputLogin(e.target.value));
@@ -18,7 +22,7 @@ const Form = ({ text, handleClick }) => {
     dispatch(changeInputPassword(e.target.value));
   };
   return (
-    <form className={styles.wrapper_form}>
+    <form className={className} >
       <p>{text}</p>
       <label className={styles.label}>
         Email

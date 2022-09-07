@@ -1,0 +1,14 @@
+@import 'styles/color.scss';
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  .p_link {
+    font-weight: 800;
+    font-size: 20px;
+    line-height: 200%;
+    color: $font-color;
+  }
+}

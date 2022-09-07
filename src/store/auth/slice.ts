@@ -2,9 +2,10 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { AUTHORIZATION_SLICE_ALIAS, IAuthSlice } from './types';
 
 const initialState: IAuthSlice = {
-  auth: '',
-  login: '',
-  password: '',
+  email: '',
+  id: null,
+  token: '',
+
   inputEmail: '',
   inputPassword: '',
 };
@@ -13,15 +14,10 @@ export const authorizationSlice = createSlice({
   name: AUTHORIZATION_SLICE_ALIAS,
   initialState,
   reducers: {
-    authorization: (state) => {
-      if (
-        state.inputEmail === state.login &&
-        state.inputPassword === state.password
-      ) {
-        state.auth = 'yes';
-      } else {
-        state.auth = 'no';
-      }
+    authorization: (state, action: PayloadAction<any>) => {
+      state.email = action.payload.email;
+      state.id = action.payload.id;
+      state.token = action.payload.token;
     },
     changeInputLogin: (state, action: PayloadAction<string>) => {
       state.inputEmail = action.payload;
@@ -30,10 +26,14 @@ export const authorizationSlice = createSlice({
       state.inputPassword = action.payload;
     },
     resetAuthorization: (state) => {
-      state.auth = initialState.auth;
-      state.inputEmail = initialState.inputEmail;
-      state.inputPassword = initialState.inputPassword;
+        state.email = initialState.email;
+        state.id = initialState.id;
+        state.token = initialState.token;
     },
+    resetInput: (state) => {
+        state.inputEmail = initialState.inputEmail;
+        state.inputPassword = initialState.inputPassword;
+    }
   },
 });
 
@@ -42,5 +42,6 @@ export const {
   resetAuthorization,
   changeInputLogin,
   changeInputPassword,
+  resetInput
 } = authorizationSlice.actions;
 export default authorizationSlice.reducer;
