@@ -1,4 +1,5 @@
 import React from 'react';
+import styles from './index.module.scss';
 
 interface IProps {
   text: string;
@@ -7,7 +8,7 @@ interface IProps {
 
 const ButtonComponent: React.FC<IProps> = ({ text, handleSubmit }) => {
   return (
-    <button type="submit" onClick={handleSubmit}>
+    <button type="submit" onClick={handleSubmit} className={styles.btn}>
       {text}
     </button>
   );

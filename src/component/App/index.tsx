@@ -1,11 +1,11 @@
-import AddItemsContainer from 'container/header';
+import AuthContainer from 'container/AuthContainer';
 import React from 'react';
 import styles from './index.module.scss';
 
 const App = () => {
   return (
     <div className={styles.wrappper}>
-      <AddItemsContainer/>;
+      <AuthContainer/>
     </div>
   )
 };

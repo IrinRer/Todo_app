@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import ButtonContainer from './Button';
+import styles from './index.module.scss';
 
 const Form = ({ text, handleClick }) => {
   const [emailValue, setEmailValue] = useState();
@@ -12,21 +13,27 @@ const Form = ({ text, handleClick }) => {
     setPasswordValue(e.target.value);
   };
   return (
-    <form>
-      {text}
-      <label>
+    <form className={styles.wrapper_form}>
+      <p>{text}</p>
+      <label className={styles.label}>
         Email
-        <input onChange={handleChangeEmail} value={emailValue} type="email" />
+        <input
+          onChange={handleChangeEmail}
+          value={emailValue}
+          type="email"
+          placeholder="Enter email"
+        />
       </label>
-      <label>
+      <label className={styles.label}>
         Password
         <input
           onChange={handleChangePassword}
           value={passwordValue}
           type="password"
+          placeholder="Enter password"
         />
       </label>
-      <ButtonContainer text={text} handleClick={handleClick}/>
+      <ButtonContainer text={text} handleClick={handleClick} />
     </form>
   );
 };
