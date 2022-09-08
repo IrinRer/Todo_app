@@ -2,7 +2,6 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import {
   STATES_TASKS_SLICE_ALIAS,
   IStatesTasks,
-  IStateTaskItem,
 } from './types';
 
 const initialState: IStatesTasks = {
@@ -13,7 +12,7 @@ export const statesTaskSlice = createSlice({
   name: STATES_TASKS_SLICE_ALIAS,
   initialState,
   reducers: {
-    setStatesTasks: (state, action: PayloadAction<Array<IStateTaskItem>>) => {
+    setStatesTasks: (state, action: PayloadAction<Array<any>>) => {
       state.states = action.payload;
     },
   },

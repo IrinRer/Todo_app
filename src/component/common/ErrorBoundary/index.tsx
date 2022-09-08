@@ -1,5 +1,5 @@
-import React, { Component, ErrorInfo, ReactNode } from "react";
-import Error from "../Error";
+import React, { Component, ErrorInfo, ReactNode } from 'react';
+import Error from '../Error';
 
 interface IProps {
   children: ReactNode;
@@ -23,7 +23,7 @@ class ErrorBoundary extends Component<IProps, State> {
     const { hasError } = this.state;
     const { children } = this.props;
     if (hasError) {
-      return <Error text="Что-то пошло не так" />;
+      return <Error text="Error" />;
     }
 
     return children;
