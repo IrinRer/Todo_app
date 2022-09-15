@@ -2,11 +2,15 @@ import React from 'react';
 import styles from './index.module.scss';
 
 const ClearItem = () => {
-    return (
-        <button type="button" className={styles.clear}>
-        Clear completed
-      </button>
-    )
+  const handleClick = () => {
+    
+  };
+
+  return (
+    <button type="button" className={styles.clear} onClick={handleClick}>
+      Clear completed
+    </button>
+  );
 };
 
 export default ClearItem;

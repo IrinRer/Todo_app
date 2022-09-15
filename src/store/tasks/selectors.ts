@@ -1,3 +1,5 @@
-import { RootState } from "store";
+import { RootState } from 'store';
 
 export const getTasks = (state: RootState) => state.tasks.tasks;
+export const getCompletedTasks = (state: RootState) =>
+  state.tasks.completedTask;

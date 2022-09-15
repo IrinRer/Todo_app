@@ -7,5 +7,6 @@ export interface ITaskItem {
     id: string;
 }
 export interface ITasks {
-    tasks: Array<ITaskItem>
+    tasks: Array<ITaskItem>;
+    completedTask: Array<ITaskItem>;
 }
