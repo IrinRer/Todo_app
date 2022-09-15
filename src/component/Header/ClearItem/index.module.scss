@@ -1,0 +1,17 @@
+@import 'styles/color.scss';
+
+.clear {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 27px;
+  color: $font-color;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+
+  &:hover {
+    transform: scale(1.1);
+    box-shadow: 0.5px 0.5px 5px $button_add;
+    border-radius: 10px;
+  }
+}
