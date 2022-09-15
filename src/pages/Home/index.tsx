@@ -1,6 +1,6 @@
-import Tasks from 'component/Tasks';
 import Header from 'container/Header';
-import { collection, getDocs } from 'firebase/firestore';
+import TaskCard from 'container/TaskCard';
+import { collection, getDocs, onSnapshot } from 'firebase/firestore';
 import { useAppDispatch } from 'hooks/redux/useAppDispatch';
 import React, { useEffect } from 'react';
 import { db } from 'server/firebase';
@@ -13,25 +13,25 @@ const Home = () => {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
+    onSnapshot(tasksCollection, (snapshot) => {
+      dispatch(
+        setTasks(snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }))),
+      );
+    });
+
     const getStates = async () => {
       const data = await getDocs(statesCollection);
       dispatch(setStatesTasks(data.docs.map((doc) => ({ ...doc.data() }))));
     };
 
-    const getTasks = async () => {
-      const data = await getDocs(tasksCollection);
-      dispatch(setTasks(data.docs.map((doc) => ({ ...doc.data(), id: doc.id}))));
-    };
-
     getStates();
-    getTasks();
     // eslint-disable-next-line
   }, []);
 
   return (
     <>
       <Header />
-      <Tasks />
+      <TaskCard />
     </>
   );
 };

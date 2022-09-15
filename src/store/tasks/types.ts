@@ -4,6 +4,7 @@ export interface ITaskItem {
     description: string;
     state: string;
     ready: boolean;
+    id: string;
 }
 export interface ITasks {
     tasks: Array<ITaskItem>
