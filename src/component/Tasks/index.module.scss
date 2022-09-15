@@ -1,10 +1,15 @@
 @import 'styles/color.scss';
+@import 'styles/mixins.scss';
 
 .wrapper {
   display: flex;
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid white;
+
+  @include media-breakpoint-only(xs) {
+    align-items: inherit;
+  }
 }
 
 .wrapper_checkbox {
@@ -17,6 +22,12 @@
     font-size: 20px;
     line-height: 27px;
     color: white;
+
+    @include media-breakpoint-only(xs) {
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 22px;
+    }
   }
 }
 
@@ -28,6 +39,12 @@
   box-sizing: border-box;
   cursor: pointer;
   border: 3px solid white;
+
+  @include media-breakpoint-only(xs) {
+    width: 25px;
+    height: 25px;
+    margin-left: 10px;
+  }
 }
 
 .label_checked {
@@ -51,55 +68,10 @@
     left: 7px;
     margin-right: 10px;
   }
-}
 
-.checkbox[checked] + .label {
-  background-color: $completed;
-  border: none;
-
-  &::after {
-    content: '';
-    width: 13px;
-    height: 8px;
-    display: inline-block;
-    border-top: 3px solid white;
-    border-right: 3px solid white;
-    border-radius: 2px;
-    transform: rotate(135deg);
-    position: relative;
-    top: 0px;
-    left: 7px;
-    margin-right: 10px;
+  @include media-breakpoint-only(xs) {
+    width: 25px;
+    height: 25px;
+    margin-left: 10px;
   }
-}
-
-.checkbox {
-  display: none;
-}
-
-.div_stated {
-  border-radius: 10px;
-  border-radius: 10px;
-  color: white;
-  font-weight: 400;
-  padding: 5px;
-  font-size: 20px;
-  line-height: 27px;
-  text-align: center;
-  width: 150px;
-}
-.div_stated[data-state='Completed'] {
-  background-color: $completed;
-}
-.div_stated[data-state='Urgent'] {
-  background-color: $urgent;
-}
-.div_stated[data-state='Important'] {
-  background-color: $important;
-}
-.div_stated[data-state='Later'] {
-  background-color: $later;
-}
-.div_stated[data-state='To study'] {
-  background-color: $to-study;
 }

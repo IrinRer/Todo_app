@@ -1,3 +1,4 @@
+import StateBlock from 'component/StateBlock';
 import React from 'react';
 import { ITaskItem } from 'store/tasks/types';
 import styles from './index.module.scss';
@@ -10,7 +11,7 @@ interface IProps {
 const Tasks: React.FC<IProps> = ({ tasks, handleClick }) => {
   return (
     <>
-      {tasks.map((item: ITaskItem) => (
+      {tasks.map((item: ITaskItem, index) => (
         <div className={styles.wrapper} key={item.id}>
           <div className={styles.wrapper_checkbox}>
             <div
@@ -19,9 +20,7 @@ const Tasks: React.FC<IProps> = ({ tasks, handleClick }) => {
             />
             <p>{item.description}</p>
           </div>
-          <div className={styles.div_stated} data-state={item.state}>
-            {item.state}
-          </div>
+          <StateBlock state={item.state} index={index}/>
         </div>
       ))}
     </>

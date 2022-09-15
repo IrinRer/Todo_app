@@ -1,0 +1,44 @@
+@import 'styles/color.scss';
+@import 'styles/mixins.scss';
+
+.div_stated {
+  border-radius: 10px;
+  border-radius: 10px;
+  color: white;
+  font-weight: 400;
+  padding: 5px;
+  font-size: 20px;
+  line-height: 27px;
+  text-align: center;
+  width: 150px;
+
+  @include media-breakpoint-only(xs) {
+    writing-mode: vertical-rl;
+    border-radius: 0px;
+    width: 30px;
+    font-weight: 600;
+    font-size: 1em;
+  }
+}
+
+.div_stated[data-order='0'] {
+  @include media-breakpoint-only(xs) {
+    border-radius: 0px 10px 0px 0px;
+  }
+}
+
+.div_stated[data-state='Completed'] {
+  background-color: $completed;
+}
+.div_stated[data-state='Urgent'] {
+  background-color: $urgent;
+}
+.div_stated[data-state='Important'] {
+  background-color: $important;
+}
+.div_stated[data-state='Later'] {
+  background-color: $later;
+}
+.div_stated[data-state='To study'] {
+  background-color: $to-study;
+}

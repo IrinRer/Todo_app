@@ -1,3 +1,9 @@
+@import 'styles/mixins.scss';
+
 .wrappper {
-    padding: 10px 50px;
+  padding: 10px 50px;
+
+  @include media-breakpoint-only(xs) {
+    padding: 10px 10px;
+  }
 }
