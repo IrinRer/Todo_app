@@ -1,15 +1,13 @@
 import Header from 'container/Header';
 import TaskCard from 'container/TaskCard';
-import { collection, getDocs, onSnapshot } from 'firebase/firestore';
+import { statesCollection, tasksCollection } from 'server/firebaseCollection';
+import { getDocs, onSnapshot } from 'firebase/firestore';
 import { useAppDispatch } from 'hooks/redux/useAppDispatch';
 import React, { useEffect } from 'react';
-import { db } from 'server/firebase';
 import { setStatesTasks } from 'store/states/slice';
 import { setTasks } from 'store/tasks/slice';
 
 const Home = () => {
-  const statesCollection = collection(db, 'states');
-  const tasksCollection = collection(db, 'tasks');
   const dispatch = useAppDispatch();
 
   useEffect(() => {
