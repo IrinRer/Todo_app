@@ -1,3 +1,4 @@
+import { addDoc } from 'firebase/firestore';
 import React from 'react';
 import { createPortal } from 'react-dom';
 import styles from './index.module.scss';
@@ -7,14 +8,15 @@ const Modal = ({ isOpen, setOpen }) => {
   if (!isOpen) return null;
 
   const handleClick = () => {
-    setOpen(false);
+    // setOpen(false);
+
   };
 
   return createPortal(
     <div className={styles.modal}>
       <ModalItem>
         <button type="button" onClick={handleClick}>
-          Close
+          Submit
         </button>
       </ModalItem>
     </div>,
