@@ -3,8 +3,8 @@ import { useAppSelector } from './redux/useAppSelector';
 
 interface IHookUseAuth {
     isAuth: boolean;
-    email: string;
-    id: number | null;
+    email: string | null;
+    id: string | null;
     token: string;
 }
 

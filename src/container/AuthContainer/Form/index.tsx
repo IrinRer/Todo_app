@@ -7,7 +7,13 @@ import { changeInputLogin, changeInputPassword } from 'store/auth/slice';
 import ButtonContainer from './Button';
 import styles from './index.module.scss';
 
-const Form = ({ text, handleClick, errorStyle}) => {
+interface IProps {
+  text: string;
+  handleClick: (email?: string, password?: string) => void;
+  errorStyle: boolean;
+}
+
+const Form: React.FC<IProps> = ({ text, handleClick, errorStyle}) => {
   const dispatch = useAppDispatch();
   const emailValue = useAppSelector(getEmail);
   const passwordValue = useAppSelector(getPassword);

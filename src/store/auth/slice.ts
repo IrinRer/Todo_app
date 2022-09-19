@@ -14,7 +14,10 @@ export const authorizationSlice = createSlice({
   name: AUTHORIZATION_SLICE_ALIAS,
   initialState,
   reducers: {
-    authorization: (state, action: PayloadAction<any>) => {
+    authorization: (
+      state,
+      action: PayloadAction<{ email: string | null; id: string; token: string }>,
+    ) => {
       state.email = action.payload.email;
       state.id = action.payload.id;
       state.token = action.payload.token;
@@ -26,14 +29,14 @@ export const authorizationSlice = createSlice({
       state.inputPassword = action.payload;
     },
     resetAuthorization: (state) => {
-        state.email = initialState.email;
-        state.id = initialState.id;
-        state.token = initialState.token;
+      state.email = initialState.email;
+      state.id = initialState.id;
+      state.token = initialState.token;
     },
     resetInput: (state) => {
-        state.inputEmail = initialState.inputEmail;
-        state.inputPassword = initialState.inputPassword;
-    }
+      state.inputEmail = initialState.inputEmail;
+      state.inputPassword = initialState.inputPassword;
+    },
   },
 });
 
@@ -42,6 +45,6 @@ export const {
   resetAuthorization,
   changeInputLogin,
   changeInputPassword,
-  resetInput
+  resetInput,
 } = authorizationSlice.actions;
 export default authorizationSlice.reducer;

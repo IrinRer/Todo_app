@@ -3,7 +3,12 @@ import { createPortal } from 'react-dom';
 import styles from './index.module.scss';
 import ModalItem from './ModalItem';
 
-const Modal = ({ isOpen, setOpen }) => {
+interface IProps {
+  isOpen: boolean;
+  setOpen: (arg: boolean) => void;
+}
+
+const Modal: React.FC<IProps> = ({ isOpen, setOpen }) => {
   if (!isOpen) return null;
 
   const handleClick = (e) => {
