@@ -1,0 +1,19 @@
+@import 'styles/color.scss';
+
+.input {
+    background: #ffffff;
+    border-radius: 10px;
+    width: 100%;
+    outline: none;
+    padding: 10px;
+    border: none;
+    font-weight: 400;
+    font-size: 20px;
+
+    &::placeholder {
+        font-weight: 400;
+        font-size: 20px;
+        line-height: 200%;
+        color: $color-placeholder;
+    }
+}
