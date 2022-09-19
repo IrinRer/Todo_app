@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ROUTES } from 'constants/route';
+import { useAuth } from 'hooks/useAuth';
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
 import { useAppDispatch } from 'hooks/redux/useAppDispatch';
 import { authorization, resetInput } from 'store/auth/slice';
@@ -9,6 +10,7 @@ import styles from './index.module.scss';
 
 const SignUp = () => {
   const dispatch = useAppDispatch();
+  const {isAuth} = useAuth();
   const [errorStyle, setErrorStyle] = useState(false);
 
   const handleClick = (email: string, password: string) => {
@@ -38,7 +40,9 @@ const SignUp = () => {
         errorStyle={errorStyle}
       />
       <p className={styles.p_link}>
-        Already have an account?
+        {isAuth
+          ? 'You have successfully registered! You can come in'
+          : 'Already have an account?'}
         <Link to={ROUTES.login.path}> Sign in</Link>
       </p>
     </div>
