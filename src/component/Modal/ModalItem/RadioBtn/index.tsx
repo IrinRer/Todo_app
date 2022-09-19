@@ -28,6 +28,7 @@ const RadioBtn = () => {
                 [styles.label_active]: btn === item.state,
               })}
               onClick={handleClick}
+              key={item.state}
             >
               {item.state}
             </button>

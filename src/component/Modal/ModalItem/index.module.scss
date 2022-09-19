@@ -1,4 +1,5 @@
 @import 'styles/color.scss';
+@import 'styles/mixins.scss';
 
 .wrapper {
   width: 40%;
@@ -6,6 +7,10 @@
   border: 2px solid #ffffff;
   border-radius: 10px;
   padding: 20px 0px 20px 0px;
+
+  @include media-breakpoint-only(xs) {
+    width: 90%;
+  }
 
   .wrapper_input_text {
     padding: 0 50px;

@@ -1,4 +1,5 @@
 @import 'styles/color.scss';
+@import 'styles/mixins.scss';
 
 .wrapper {
   width: 100%;
@@ -6,6 +7,10 @@
   justify-content: space-evenly;
   margin-top: 20px;
   align-items: center;
+
+  @include media-breakpoint-only(xs) {
+    margin-top: 50px;
+  }
 
   .btn {
     border: none;
@@ -15,6 +20,10 @@
     line-height: 27px;
     color: $font-color;
     cursor: pointer;
+
+    @include media-breakpoint-only(xs) {
+      font-size: 10px;
+    }
   }
 
   .btn_active {
@@ -25,5 +34,9 @@
     line-height: 27px;
     color: white;
     cursor: pointer;
+
+    @include media-breakpoint-only(xs) {
+      font-size: 10px;
+    }
   }
 }
