@@ -12,6 +12,16 @@
 
   @include media-breakpoint-only(xs) {
     padding: 0;
-    width: 100%
+    width: 100%;
   }
+}
+
+.p_add {
+  text-align: center;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 20px;
+  line-height: 90%;
+  padding-top: 30px;
+  color: white;
 }

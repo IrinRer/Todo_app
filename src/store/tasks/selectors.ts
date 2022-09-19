@@ -5,3 +5,4 @@ export const getCompletedTasks = (state: RootState) =>
   state.tasks.completedTask;
 export const getInputTask = (state: RootState) => state.tasks.inputTask;
 export const getInputState = (state: RootState) => state.tasks.inputState;
+export const getNumberTasks = (state: RootState) => state.tasks.tasks.length;

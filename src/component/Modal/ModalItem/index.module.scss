@@ -32,4 +32,10 @@
   text-transform: uppercase;
   margin: 50px auto;
   margin-bottom: 0;
+  cursor: pointer;
+
+  &:hover {
+    transform: scale(1.1);
+    box-shadow: 0.5px 0.5px 5px black;
+  }
 }

@@ -18,7 +18,11 @@ const TaskCard = () => {
 
   return (
     <div className={styles.wrapper}>
-      <Tasks tasks={tasks} handleClick={handleClick} />
+      {tasks.length === 0 ? (
+        <p className={styles.p_add}>No tasks found</p>
+      ) : (
+        <Tasks tasks={tasks} handleClick={handleClick} />
+      )}
     </div>
   );
 };
