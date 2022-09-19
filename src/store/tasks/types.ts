@@ -10,4 +10,5 @@ export interface ITasks {
     tasks: Array<ITaskItem>;
     completedTask: Array<ITaskItem>;
     inputTask: string;
+    inputState: string;
 }

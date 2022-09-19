@@ -10,11 +10,26 @@
   .wrapper_input_text {
     padding: 0 50px;
     p {
-        font-weight: 700;
-        font-size: 20px;
-        line-height: 27px;
-        color: white;
-        text-align: center;
-      }
+      font-weight: 700;
+      font-size: 20px;
+      line-height: 27px;
+      color: white;
+      text-align: center;
+    }
   }
+}
+
+.btn {
+  width: 182px;
+  height: 40px;
+  display: block;
+  font-weight: 800;
+  font-size: 16px;
+  line-height: 200%;
+  color: $font-color;
+  border: 2px solid $font-color;
+  border-radius: 10px;
+  text-transform: uppercase;
+  margin: 50px auto;
+  margin-bottom: 0;
 }

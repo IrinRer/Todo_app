@@ -6,6 +6,7 @@ import { TASKS_SLICE_ALIAS, ITasks } from './types';
 const initialState: ITasks = {
   tasks: [],
   inputTask: '',
+  inputState: '',
   completedTask: [],
 };
 
@@ -19,6 +20,9 @@ export const statesTaskSlice = createSlice({
     setInputTask: (state, action: PayloadAction<string>) => {
       state.inputTask = action.payload;
     },
+    setInputState: (state, action: PayloadAction<string>) => {
+      state.inputState = action.payload;
+    },
     clearCompleted: (state) => {
       state.completedTask = state.tasks.filter((item) => item.ready);
       state.completedTask.forEach((item) => {
@@ -29,6 +33,6 @@ export const statesTaskSlice = createSlice({
   },
 });
 
-export const { setTasks, clearCompleted, setInputTask } =
+export const { setTasks, clearCompleted, setInputTask, setInputState } =
   statesTaskSlice.actions;
 export default statesTaskSlice.reducer;
