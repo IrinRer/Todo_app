@@ -6,23 +6,43 @@ import styles from './index.module.scss';
 interface IProps {
   tasks: Array<ITaskItem>;
   handleClick: (id: string, ready: boolean) => void;
+  state: string | null;
 }
 
-const Tasks: React.FC<IProps> = ({ tasks, handleClick }) => {
+const Tasks: React.FC<IProps> = ({ tasks, handleClick, state }) => {
   return (
     <>
-      {tasks.map((item: ITaskItem, index) => (
-        <div className={styles.wrapper} key={item.id}>
-          <div className={styles.wrapper_checkbox}>
-            <div
-              className={item.ready ? styles.label_checked : styles.label}
-              onClick={() => handleClick(item.id, item.ready)}
-            />
-            <p>{item.description}</p>
-          </div>
-          <StateBlock state={item.state} index={index}/>
-        </div>
-      ))}
+      {/* eslint-disable-next-line */}
+      {tasks.map((item: ITaskItem, index) => {
+        if (state === 'All') {
+          return (
+            <div className={styles.wrapper} key={item.id}>
+              <div className={styles.wrapper_checkbox}>
+                <div
+                  className={item.ready ? styles.label_checked : styles.label}
+                  onClick={() => handleClick(item.id, item.ready)}
+                />
+                <p>{item.description}</p>
+              </div>
+              <StateBlock state={item.state} index={index} />
+            </div>
+          );
+        }
+        if (item.state === state) {
+          return (
+            <div className={styles.wrapper} key={item.id}>
+              <div className={styles.wrapper_checkbox}>
+                <div
+                  className={item.ready ? styles.label_checked : styles.label}
+                  onClick={() => handleClick(item.id, item.ready)}
+                />
+                <p>{item.description}</p>
+              </div>
+              <StateBlock state={item.state} index={index} />
+            </div>
+          );
+        } 
+      })}
     </>
   );
 };

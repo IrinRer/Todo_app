@@ -11,4 +11,5 @@ export interface ITasks {
     completedTask: Array<ITaskItem>;
     inputTask: string;
     inputState: string;
+    filterState: string | null;
 }

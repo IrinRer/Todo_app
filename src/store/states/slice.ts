@@ -1,8 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import {
-  STATES_TASKS_SLICE_ALIAS,
-  IStatesTasks,
-} from './types';
+import { STATES_TASKS_SLICE_ALIAS, IStatesTasks } from './types';
 
 const initialState: IStatesTasks = {
   states: [],
@@ -14,6 +11,7 @@ export const statesTaskSlice = createSlice({
   reducers: {
     setStatesTasks: (state, action: PayloadAction<Array<any>>) => {
       state.states = action.payload;
+      state.states.unshift({ state: 'All', color: '' });
     },
   },
 });

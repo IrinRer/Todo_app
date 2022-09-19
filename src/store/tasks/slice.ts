@@ -8,6 +8,7 @@ const initialState: ITasks = {
   inputTask: '',
   inputState: '',
   completedTask: [],
+  filterState: 'All',
 };
 
 export const statesTaskSlice = createSlice({
@@ -23,6 +24,9 @@ export const statesTaskSlice = createSlice({
     setInputState: (state, action: PayloadAction<string>) => {
       state.inputState = action.payload;
     },
+    setFilterState: (state, action: PayloadAction<string | null>) => {
+      state.filterState = action.payload;
+    },
     clearCompleted: (state) => {
       state.completedTask = state.tasks.filter((item) => item.ready);
       state.completedTask.forEach((item) => {
@@ -33,6 +37,11 @@ export const statesTaskSlice = createSlice({
   },
 });
 
-export const { setTasks, clearCompleted, setInputTask, setInputState } =
-  statesTaskSlice.actions;
+export const {
+  setTasks,
+  clearCompleted,
+  setInputTask,
+  setInputState,
+  setFilterState,
+} = statesTaskSlice.actions;
 export default statesTaskSlice.reducer;

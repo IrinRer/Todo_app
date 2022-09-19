@@ -18,18 +18,23 @@ const RadioBtn = () => {
 
   return (
     <div className={styles.wrapper}>
-      {states.map((item) => (
-        <button
-          type="button"
-          data-state={item.state}
-          className={classnames(styles.label, {
-            [styles.label_active]: btn === item.state,
-          })}
-          onClick={handleClick}
-        >
-          {item.state}
-        </button>
-      ))}
+      {states.map((item) => {
+        if (item.state !== 'All') {
+          return (
+            <button
+              type="button"
+              data-state={item.state}
+              className={classnames(styles.label, {
+                [styles.label_active]: btn === item.state,
+              })}
+              onClick={handleClick}
+            >
+              {item.state}
+            </button>
+          );
+        }
+        return null;
+      })}
     </div>
   );
 };
