@@ -1,6 +1,6 @@
 import { useAppDispatch } from 'hooks/redux/useAppDispatch';
 import { useAppSelector } from 'hooks/redux/useAppSelector';
-import React, { useState } from 'react';
+import React from 'react';
 import { getStates } from 'store/states/selectors';
 import classnames from 'classnames';
 import { getFilterState } from 'store/tasks/selectors';
@@ -9,13 +9,11 @@ import styles from './index.module.scss';
 
 const Filter = () => {
   const states = useAppSelector(getStates);
-  const [clickState, setClickState] = useState();
   const state = useAppSelector(getFilterState);
   const dispatch = useAppDispatch();
 
   const handleClick = (e) => {
     dispatch(setFilterState(e.target.dataset.state));
-    setClickState(e.target.dataset.state);
   };
 
   return (

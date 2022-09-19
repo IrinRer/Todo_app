@@ -1,7 +1,6 @@
-import StateBlock from 'component/StateBlock';
 import React from 'react';
 import { ITaskItem } from 'store/tasks/types';
-import styles from './index.module.scss';
+import TaskFilter from './TaskFilter';
 
 interface IProps {
   tasks: Array<ITaskItem>;
@@ -10,41 +9,7 @@ interface IProps {
 }
 
 const Tasks: React.FC<IProps> = ({ tasks, handleClick, state }) => {
-  return (
-    <>
-      {/* eslint-disable-next-line */}
-      {tasks.map((item: ITaskItem, index) => {
-        if (state === 'All') {
-          return (
-            <div className={styles.wrapper} key={item.id}>
-              <div className={styles.wrapper_checkbox}>
-                <div
-                  className={item.ready ? styles.label_checked : styles.label}
-                  onClick={() => handleClick(item.id, item.ready)}
-                />
-                <p>{item.description}</p>
-              </div>
-              <StateBlock state={item.state} index={index} />
-            </div>
-          );
-        }
-        if (item.state === state) {
-          return (
-            <div className={styles.wrapper} key={item.id}>
-              <div className={styles.wrapper_checkbox}>
-                <div
-                  className={item.ready ? styles.label_checked : styles.label}
-                  onClick={() => handleClick(item.id, item.ready)}
-                />
-                <p>{item.description}</p>
-              </div>
-              <StateBlock state={item.state} index={index} />
-            </div>
-          );
-        } 
-      })}
-    </>
-  );
+  return <TaskFilter tasks={tasks} handleClick={handleClick} state={state} />;
 };
 
 export default Tasks;
