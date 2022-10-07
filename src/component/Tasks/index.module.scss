@@ -10,6 +10,10 @@
   @include media-breakpoint-only(xs) {
     align-items: inherit;
   }
+
+  &:last-child {
+    border-bottom: none;
+  }
 }
 
 .wrapper_checkbox {

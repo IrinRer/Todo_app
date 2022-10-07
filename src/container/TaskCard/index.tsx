@@ -21,12 +21,12 @@ const TaskCard = () => {
 
   return (
     <div className={styles.wrapper}>
+      <Filter />
       {tasks.length === 0 ? (
         <NotFoundTask />
       ) : (
         <Tasks tasks={tasks} handleClick={handleClick} state={state} />
       )}
-      <Filter />
     </div>
   );
 };
