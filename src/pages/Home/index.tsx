@@ -1,4 +1,3 @@
-import Header from 'container/Header';
 import TaskCard from 'container/TaskCard';
 import { statesCollection, tasksCollection } from 'server/firebaseCollection';
 import { getDocs, onSnapshot } from 'firebase/firestore';
@@ -6,6 +5,7 @@ import { useAppDispatch } from 'hooks/redux/useAppDispatch';
 import React, { useEffect } from 'react';
 import { setStatesTasks } from 'store/states/slice';
 import { setTasks } from 'store/tasks/slice';
+import Header from 'container/header';
 
 const Home = () => {
   const dispatch = useAppDispatch();

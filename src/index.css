@@ -14,19 +14,15 @@ code {
 }
 
 html[data-theme='dark'] {
-  --background-color: #5D5F61;
+  --background-color: #1C273C;
   --font-color: #E1E3E6;
-  --active-a: #FFDC01;
-  --color-post: #B095FF;
-  --border-post: #723FFF;
+  --backgroun-color-component: #354259;
 }
 
 html[data-theme='light'] {
 --background-color: white;
 --font-color: black;
---active-a: #794efa;
---color-post: #f8baec;
---border-post: #FE78E3;
+--backgroun-color-component: #54BAB9;
 }
 
 body {
