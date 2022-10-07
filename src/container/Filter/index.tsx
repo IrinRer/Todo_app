@@ -16,27 +16,32 @@ const Filter = () => {
   const dispatch = useAppDispatch();
   const size = useWindowSize();
 
-  const handleClick = (e) => {
-    dispatch(setFilterState(e.target.dataset.state));
+  const handleClick = (e: React.FormEvent<EventTarget>) => {
+    const target = e.target as HTMLInputElement;
+    if (target.dataset.state) {
+      dispatch(setFilterState(target.dataset.state));
+    }
   };
 
   return (
     <div className={styles.wrapper}>
-      {size.width > MOBILE_ADAPTIVE_WIDTH
-        ? states.map((item) => (
-            <button
-              type="button"
-              className={classnames(styles.btn, {
-                [styles.btn_active]: item.state === state,
-              })}
-              data-state={item.state}
-              onClick={handleClick}
-              key={item.state}
-            >
-              {item.state}
-            </button>
-          ))
-        : <FilterSwiper/>}
+      {size.width > MOBILE_ADAPTIVE_WIDTH ? (
+        states.map((item) => (
+          <button
+            type="button"
+            className={classnames(styles.btn, {
+              [styles.btn_active]: item.state === state,
+            })}
+            data-state={item.state}
+            onClick={handleClick}
+            key={item.state}
+          >
+            {item.state}
+          </button>
+        ))
+      ) : (
+        <FilterSwiper />
+      )}
     </div>
   );
 };

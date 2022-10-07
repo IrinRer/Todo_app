@@ -9,8 +9,9 @@ const Input = () => {
   const dispatch = useAppDispatch();
   const inputTask = useAppSelector(getInputTask);
 
-  const handleChange = (e) => {
-    dispatch(setInputTask(e.target.value));
+  const handleChange = (e: React.FormEvent<EventTarget>) => {
+    const target = e.target as HTMLInputElement;
+    dispatch(setInputTask(target.value));
   };
 
   return (

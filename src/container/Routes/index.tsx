@@ -13,7 +13,7 @@ const CreateRoutes: React.FC = () => {
   return (
     <BrowserRouter basename={process.env.PUBLIC_URL}>
       <ErrorBoundary>
-        <Theme/>
+        <Theme />
         <Routes>
           <Route
             path={ROUTES.home.path}

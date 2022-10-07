@@ -13,22 +13,24 @@ interface IProps {
   errorStyle: boolean;
 }
 
-const Form: React.FC<IProps> = ({ text, handleClick, errorStyle}) => {
+const Form: React.FC<IProps> = ({ text, handleClick, errorStyle }) => {
   const dispatch = useAppDispatch();
   const emailValue = useAppSelector(getEmail);
   const passwordValue = useAppSelector(getPassword);
   const className = classnames(styles.wrapper_form, {
-    [styles.error_form]: errorStyle
+    [styles.error_form]: errorStyle,
   });
 
-  const handleChangeEmail = (e) => {
-    dispatch(changeInputLogin(e.target.value));
+  const handleChangeEmail = (e: React.FormEvent<EventTarget>) => {
+    const target = e.target as HTMLInputElement;
+    dispatch(changeInputLogin(target.value));
   };
-  const handleChangePassword = (e) => {
-    dispatch(changeInputPassword(e.target.value));
+  const handleChangePassword = (e: React.FormEvent<EventTarget>) => {
+    const target = e.target as HTMLInputElement;
+    dispatch(changeInputPassword(target.value));
   };
   return (
-    <form className={className} >
+    <form className={className}>
       <p>{text}</p>
       <label className={styles.label}>
         Email

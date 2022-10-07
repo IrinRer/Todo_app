@@ -11,7 +11,7 @@ import styles from './index.module.scss';
 const Login = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  const {isAuth} = useAuth();
+  const { isAuth } = useAuth();
   const [errorStyle, setErrorStyle] = useState(false);
 
   const handleClick = (email: string, password: string) => {
@@ -26,7 +26,7 @@ const Login = () => {
           }),
         );
 
-        if(isAuth) {
+        if (isAuth) {
           navigate(ROUTES.home.path);
         }
       })
@@ -34,7 +34,6 @@ const Login = () => {
         dispatch(resetInput());
         setErrorStyle(true);
       });
-
   };
 
   return (

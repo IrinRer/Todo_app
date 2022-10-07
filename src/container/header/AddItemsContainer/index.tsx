@@ -11,7 +11,7 @@ const AddItemsContainer = () => {
     <div className={styles.wrapper}>
       <p className={styles.task}>{tasksNumber} task</p>
       <BtnAddNewTask />
-      <ClearItem/>
+      <ClearItem />
     </div>
   );
 };
