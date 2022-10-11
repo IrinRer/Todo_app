@@ -1,70 +1,189 @@
-# Getting Started with Create React App
+## Описание 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Todo приложение с возможностью регистрации и входа в аккаунт. При клике на кнопку добавить задачу, открывается модальное окно, в котором вводится текст задачи и прикрепляется нужный тег. Есть возможность фильтрации по тегу. Задачи, которые отмечены как выполненные можно удалить.
 
-## Available Scripts
+Если не хотите регистрироваться, то можете войти **по email: test@mail.ru** и **паролю: qwerty**.
 
-In the project directory, you can run:
+Есть возможность менять тему на светлую или темную.
 
-### `npm start`
+## Технологии 
+1. React
+2. TypeScript
+3. Redux (redux-toolkit)
+4. Firebase
+5. CSS modules
+7. Swiper
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Что было сделано 
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+1. Все приложение обернуто в Error Boundary, который рендерит специальный компонент, если возникают ошибки. Это позволяет избежать возможный крах приложения.
 
-### `npm test`
+Используется общий компонент для 404 ERROR и для ошибок, которые ловятся в Error Boundary. Этот универсальный компонент принимает разные props и в зависимости от этого отображается нужный текст. Это позволяет избежать дублирования кода.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+2. Приватные роуты.
+Есть страница на которой отображаются данные, но эти данные может посмотреть только авторизованный пользователь, если он не авторизован, то его перебрасывает на страницу с авторизацией.
 
-### `npm run build`
+<Route path={ROUTES.home.path} element={ <PrivateRoute> <Home /> </PrivateRoute> }/>
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+В данном примере я оборачиваю компонент Home (является страницей) в компонент PrivateRoute, который внутри себя проверяет авторизацию и если ее нет, то на страницу Home вход не происходит.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+3. TypeScript позволяет использовать Record, что очень удобно при создании роутов, так как мы заранее определяем в объекте какие страницы будут, это позволяет избежать ошибок.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+4. Валидация form на ввод неверного пароля или логина.
 
-### `npm run eject`
+Если пользователь вводит неверный пароль или логин, то у всей формы меняется стиль. 
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+5. При клике на кнопку **Add new task** открывается модальное окно. 
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Модальное окно создается через createPortal, это сделано для того, чтобы модальное окно было поверх родителя.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```
+return createPortal(
+    <div className={styles.modal} onClick={handleClick}>
+      <FormModal handleClickModal={setOpen} />
+    </div>,
+    document.body,
+  );
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Первый аргумент - это непосредственно модальное окно.
 
-## Learn More
+Второй аргумент - это то, место куда должно быть вставлено модальное окно.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Модальное окно закрывается при клике на область вне модального окна.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+6. При нажатии на кнопку **Clear item** задачи, которые помеченные как выполненные удаляются. 
 
-### Code Splitting
+``` 
+const handleClick = () => {
+    dispatch(clearCompleted());
+  };
+``` 
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+**clearCompleted** - это reducer, который расположен в *slice - statesTaskSlice*. 
 
-### Analyzing the Bundle Size
+```
+ clearCompleted: (state) => {
+      state.completedTask = state.tasks.filter((item) => item.ready);
+      state.completedTask.forEach((item) => {
+        const task = doc(db, 'tasks', item.id);
+        deleteDoc(task);
+      });
+    },
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Сначала я фильтрую массив **completedTask**, в котором расположены все tasks. Затем прохожусь уже по этому отфильтрованному массиву с помощью forEach (так как ничего возвращать не нужно), нахожу задачу которая была удалена ``  const task = doc(db, 'tasks', item.id); `` и удаляю ее из БД firebase ``deleteDoc(task);``.
 
-### Making a Progressive Web App
+7. Модальное окно содержит поле ввода задачи и теги, по ним потом будет осуществляться фильтрация. 
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Теги представляю собой кнопки. 
 
-### Advanced Configuration
+``` 
+ <button
+      type="button"
+      data-state={item.state}
+      className={classnames(styles.label, {
+      [styles.label_active]: btn === item.state,
+      })}
+      onClick={handleClick}
+      key={item.state} >
+      {item.state}
+ </button>
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Атрибут **data-state={item.state}** нужен для того, чтобы в SCSS можно было динамически устанавливать нужные цвета в зависимости от значения **item.state**. 
 
-### Deployment
+```
+.label[data-state='Later'] {
+  background-color: $later;
+}
+```
+Использую библиотеку **classnames**, чтобы установит новый стиль для той кнопки, которая является активной.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+8. Можно менять тему на светлую или темную. 
 
-### `npm run build` fails to minify
+Хук **useTheme** устанавливает в **localStorage** нужное значение. Это было сделано для того, чтобы тема сохранялось после обновления и после выхода из приложения. 
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+``` 
+ useLayoutEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('app-theme', theme);
+  }, [theme]);
+```
+
+Затем уже в компоненте Theme можно выбрать тему нажав на иконку. В зависимости от того какая сейчас тема будут рендериться разные svg иконки. 
+
+```
+  {theme === THEME.LIGHT ? (
+        <Sun onClick={setDarkTheme} />
+      ) : (
+        <Moon onClick={setLightTheme} />
+      )}
+```
+
+9. В приложение можно зарегистрироваться или войти, если вы уже ранее регистрировались. 
+
+Универсальный компонент Form позволяет избежать дублирования кода. В этот компонент передаются нужные props - *text, handleClick, errorStyle*. 
+
+**text** - может быть Registration или Login In. 
+
+**handleClick** - функция, которая вызывается при клике. 
+
+**errorStyle** - если функция handleClick заканчивается ошибкой (при входе неверный пароль или логин, ошибка регистрации), то стиль с нормального меняется на errorStyle. 
+
+10. В мобильной версии есть slider. 
+
+В мобильной версии фильтрация осуществляется через slider. 
+
+```
+  const handleChange = ({ activeIndex }) => {
+    switch (activeIndex) {
+      case 1:
+        toDispatch(INDEX.one);
+        break;
+    ....
+```
+
+Когда происходит смена слайда вызывается функция ** handleChange**, которая принимает индекс активного слайда - **activeIndex**. В зависимости от того, какой индекс будет идти разная фильтрация. Например, если индекс 1 (как в примере выше), значит фильтрация будет идти по тегу *Late*.
+
+```
+export enum INDEX {
+  'zero' = 'All',
+  'one' = 'Late',
+  'two' = 'Urgent',
+  'three' = 'To study',
+  'four' = 'Important',
+  'five' = 'Completed',
+}
+```
+Функция **toDispatch** вызывает reducer setFilterState, который устанавливает нужный state для фильтрации.
+
+```
+ const toDispatch = (arg: string) => {
+    dispatch(setFilterState(arg));
+  };
+```
+
+11. Сделан адаптив под разные устройства.
+
+Мобильная и планшетная версия: Хук useWindowSize определяет ширину viewport и в соответствии с этим рендерится нужный компонент. В декстопной версии присутствуют некоторые элементы, которые отсутствуют в мобильной и планшетной версии.
+
+Адаптив сделан с помощью mixin, который принимает переменные и в зависимости от значения возвращает нужный @media.
+
+## Как запустить 
+
+GitHub Page: https://irinrer.github.io/Todo_app/
+
+Или можете запустить у себя. 
+
+1. Клонируете репозиторий
+
+`` https://github.com/IrinRer/Todo_app.git ``
+
+2. Устанавливаете зависимости
+
+``npm i``
+
+3. Запускаете проект
+
+``npm start``
