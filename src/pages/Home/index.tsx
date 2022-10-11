@@ -5,7 +5,7 @@ import { useAppDispatch } from 'hooks/redux/useAppDispatch';
 import React, { useEffect } from 'react';
 import { setStatesTasks } from 'store/states/slice';
 import { setTasks } from 'store/tasks/slice';
-import Header from 'container/header';
+import Header from 'container/Header';
 
 const Home = () => {
   const dispatch = useAppDispatch();
