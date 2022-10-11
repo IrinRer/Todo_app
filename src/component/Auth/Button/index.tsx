@@ -3,7 +3,7 @@ import styles from './index.module.scss';
 
 interface IProps {
   text: string;
-  handleSubmit: (e: any) => void;
+  handleSubmit: (e) => void;
 }
 
 const ButtonComponent: React.FC<IProps> = ({ text, handleSubmit }) => {

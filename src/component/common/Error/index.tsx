@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import Img404 from '../../../asserts/icons/404.gif';
 import styles from './index.module.scss';
 

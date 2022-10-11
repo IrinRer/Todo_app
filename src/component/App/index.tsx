@@ -5,7 +5,7 @@ import styles from './index.module.scss';
 const App = () => {
   return (
     <div className={styles.wrappper}>
-      <CreateRoutes/>
+      <CreateRoutes />
     </div>
   )
 };

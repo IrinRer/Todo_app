@@ -23,7 +23,7 @@ const TaskFilter: React.FC<IProps> = ({ tasks, handleClick, state }) => {
                 />
                 <p>{item.description}</p>
               </div>
-              <StateBlock state={item.state} index={index} />
+              <StateBlock state={item.state} />
             </div>
           );
         }
@@ -37,7 +37,7 @@ const TaskFilter: React.FC<IProps> = ({ tasks, handleClick, state }) => {
                 />
                 <p>{item.description}</p>
               </div>
-              <StateBlock state={item.state} index={index} />
+              <StateBlock state={item.state} />
             </div>
           );
         }

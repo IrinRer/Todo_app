@@ -1,4 +1,4 @@
-export const AUTHORIZATION_SLICE_ALIAS = "authorization";
+export const AUTHORIZATION_SLICE_ALIAS = 'authorization';
 
 export interface IAuthSlice {
   email: string | null;

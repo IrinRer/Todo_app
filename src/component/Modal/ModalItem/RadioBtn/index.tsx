@@ -11,9 +11,12 @@ const RadioBtn = () => {
   const states = useAppSelector(getStates);
   const dispatch = useAppDispatch();
 
-  const handleClick = (e) => {
-    dispatch(setInputState(e.target.dataset.state));
-    setBtn(e.target.dataset.state);
+  const handleClick = (e: React.FormEvent<EventTarget>) => {
+    const target = e.target as HTMLInputElement;
+    if (target.dataset.state) {
+      dispatch(setInputState(target.dataset.state));
+      setBtn(target.dataset.state);
+    }
   };
 
   return (

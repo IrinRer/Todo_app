@@ -8,11 +8,11 @@
   flex-direction: column;
   border-radius: 10px;
   background-color: $error !important;
-  
+
   input {
     border: 3px solid $urgent !important;
   }
-  
+
   button {
     border: 3px solid $urgent !important;
     color: $urgent !important;
@@ -22,7 +22,6 @@
       box-shadow: 0px 2px 0px $urgent;
     }
   }
-
 }
 .wrapper_form {
   display: flex;

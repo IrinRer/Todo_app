@@ -14,23 +14,19 @@ code {
 }
 
 html[data-theme='dark'] {
-  --background-color: #5D5F61;
-  --font-color: #E1E3E6;
-  --active-a: #FFDC01;
-  --color-post: #B095FF;
-  --border-post: #723FFF;
+  --background-color: #1c273c;
+  --font-color: #e1e3e6;
+  --backgroun-color-component: #354259;
 }
 
 html[data-theme='light'] {
---background-color: white;
---font-color: black;
---active-a: #794efa;
---color-post: #f8baec;
---border-post: #FE78E3;
+  --background-color: white;
+  --font-color: black;
+  --backgroun-color-component: #54bab9;
 }
 
 body {
-background-color: var(--background-color);
-color: var(--font-color);
-transition: background-color 200ms linear;
+  background-color: var(--background-color);
+  color: var(--font-color);
+  transition: background-color 200ms linear;
 }

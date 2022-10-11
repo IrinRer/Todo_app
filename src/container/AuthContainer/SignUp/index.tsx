@@ -10,7 +10,7 @@ import styles from './index.module.scss';
 
 const SignUp = () => {
   const dispatch = useAppDispatch();
-  const {isAuth} = useAuth();
+  const { isAuth } = useAuth();
   const [errorStyle, setErrorStyle] = useState(false);
 
   const handleClick = (email: string, password: string) => {

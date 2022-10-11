@@ -3,12 +3,11 @@ import styles from './index.module.scss';
 
 interface IProps {
   state: string;
-  index: number;
 }
 
-const StateBlock: React.FC<IProps> = ({ state, index }) => {
+const StateBlock: React.FC<IProps> = ({ state }) => {
   return (
-    <div className={styles.div_stated} data-state={state} data-order={index}>
+    <div className={styles.div_stated} data-state={state}>
       {state}
     </div>
   );

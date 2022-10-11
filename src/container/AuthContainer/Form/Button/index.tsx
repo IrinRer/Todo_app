@@ -12,7 +12,7 @@ const ButtonContainer: React.FC<IProps> = ({ text, handleClick }) => {
   const email = useAppSelector(getEmail);
   const password = useAppSelector(getPassword);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent<EventTarget>) => {
     e.preventDefault();
     handleClick(email, password);
   };

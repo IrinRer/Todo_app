@@ -5,7 +5,7 @@ import Filter from 'container/Filter';
 import { useAppSelector } from 'hooks/redux/useAppSelector';
 import { doc, updateDoc } from 'firebase/firestore';
 import { db } from 'server/firebase';
-import { getFilterState,  getTasks } from 'store/tasks/selectors';
+import { getFilterState, getTasks } from 'store/tasks/selectors';
 import styles from './index.module.scss';
 
 const TaskCard = () => {
@@ -19,15 +19,14 @@ const TaskCard = () => {
     setCheckedStyled(!checkedStyled);
   };
 
-
   return (
     <div className={styles.wrapper}>
-      {tasks.length === 0 ? (
-        <NotFoundTask/>
-      ) : (
-        <Tasks tasks={tasks} handleClick={handleClick} state={state} /> 
-      )}
       <Filter />
+      {tasks.length === 0 ? (
+        <NotFoundTask />
+      ) : (
+        <Tasks tasks={tasks} handleClick={handleClick} state={state} />
+      )}
     </div>
   );
 };

@@ -14,7 +14,7 @@ const BtnAddNewTask = () => {
       <button type="submit" className={styles.btn_add} onClick={handleClick}>
         Add new task
       </button>
-      <Modal isOpen={isOpen} setOpen={setOpen}/>
+      <Modal isOpen={isOpen} setOpen={setOpen} />
     </>
   );
 };
